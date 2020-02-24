@@ -18,6 +18,7 @@ jobs:
       script: src/test/java/com/example/helloworld/IntegrationTest.java
       before_install:
         - chmod +x src/test/java/com/example/helloworld/IntegrationTest.java
+        - ./mvnw package
         - java -jar target/dropwizard-example-$DW_VERSION.jar db migrate example.yml
         - java -jar target/dropwizard-example-$DW_VERSION.jar server example.yml
     - stage: test
