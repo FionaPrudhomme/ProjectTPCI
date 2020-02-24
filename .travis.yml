@@ -5,42 +5,25 @@ addons:
   apt:
     packages:
       - ant
-jdk:
-  - openjdk8
-  - openjdk11
-
-template: Hello, %s!
-defaultName: Stranger
-
-database:
-  driverClass: org.h2.Driver
-  user: sa
-  password: sa
-  url: jdbc:h2:./target/test-example
-
-server:
-  applicationConnectors:
-    - type: http
-      port: 0
-  adminConnectors:
-    - type: http
-      port: 0
-
-# Logging settings.
-logging:
-  level: INFO
-  appenders:
-    - type: console
-    - type: file
-      currentLogFilename: './logs/application.log'
-      archivedLogFilenamePattern: './logs/application-%d-%i.log.gz'
-      archive: true
-      archivedFileCount: 7
-      maxFileSize: '1MiB'
 
 jobs:
   include:
-    - jdk_switcher use openjdk8
+    - stage: test
+      name: Linux + OpenJDK 8
+      os: linux
+      dist: xenial
+      sudo: required
+      jdk: openjdk8
+      install: true
+      script: src/main/java/com/example/helloworld/
+    - stage: test
+      name: Linux + Oracle JDK 11
+      os: linux
+      dist: xenial
+      sudo: required
+      jdk: openjdk11
+      install: true
+      script: src/main/java/com/example/helloworld/
     - stage: "Tests Integration"
       name: "Integration Tests Java 8"
       script: ./src/test/java/com/example/helloworld/IntegrationTest.java
