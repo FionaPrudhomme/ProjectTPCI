@@ -15,7 +15,7 @@ jobs:
       sudo: required
       jdk: openjdk8
       install: true
-      script: src/main/java/com/example/helloworld/
+      script: src/test/java/com/example/helloworld/IntegrationTest.java
     - stage: test
       name: Linux + Oracle JDK 11
       os: linux
@@ -23,7 +23,7 @@ jobs:
       sudo: required
       jdk: openjdk11
       install: true
-      script: src/main/java/com/example/helloworld/
+      script: src/test/java/com/example/helloworld/IntegrationTest.java
     - stage: "Tests Integration"
       name: "Integration Tests Java 8"
       script: ./src/test/java/com/example/helloworld/IntegrationTest.java
