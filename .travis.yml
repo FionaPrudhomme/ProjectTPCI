@@ -4,14 +4,9 @@ addons:
   apt:
     packages:
       - ant
-deploy:
-  provider: script
-  script: bash scripts/deploy.sh production $TRAVIS_TAG
-  on:
-    tags: true
-    all_branches: true
 jdk:
   - openjdk8
+  - openjdk11
 template: Hello, %s!
 defaultName: Stranger
 
@@ -43,11 +38,10 @@ logging:
 
 jobs:
   include:
-    - stage: "Tests"                # naming the Tests stage
-      name: "Unit Tests"            # names the first Tests stage job
-      script: src/test/java/com/example/helloworld/resources
-    - script: ./src/test/java/com/example/helloworld/IntegrationTest.java
-      name: "Integration Tests"     # names the second Tests stage job
+    - jdk_switcher use openjdk8
+    - stage: "Tests"
+      name: "Integration Tests Java 8"
+      script: src/test/java/com/example/helloworld/IntegrationTest.java
     - stage: deploy
-      name: "Deploy to GCP"
+      name: "Deploy"
       script: ./deploy
