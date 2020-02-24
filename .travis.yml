@@ -15,7 +15,7 @@ jobs:
       sudo: required
       jdk: openjdk8
       install: true
-      script: src/test/java/com/example/helloworld
+      script: src/test/java/com/example/helloworld/IntegrationTest.java
       before_install:
         - chmod +x src/test/java/com/example/helloworld
     - stage: test
