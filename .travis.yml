@@ -1,3 +1,4 @@
+sudo: true
 dist: xenial
 language: java
 addons:
@@ -42,7 +43,7 @@ jobs:
     - jdk_switcher use openjdk8
     - stage: "Tests Integration"
       name: "Integration Tests Java 8"
-      script: src/test/java/com/example/helloworld
+      script: src/test/java/com/example/helloworld/IntegrationTest.java
     - stage: deploy
       name: "Deploy"
       script: ./deploy
