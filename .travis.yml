@@ -1,0 +1,19 @@
+dist: xenial
+language: java
+addons:
+  apt:
+    packages:
+      - ant
+jdk:
+  - openjdk8
+jobs:
+  include:
+    - stage: "Tests"                # naming the Tests stage
+      name: "Unit Tests"            # names the first Tests stage job
+      script: ./src/test/java/tcpi/matrix
+    - stage : "deploy"
+      name: "deploy"
+      script: bash scripts/deploy.sh production $TRAVIS_TAG
+        on:
+          tags: true
+          all_branches: true
