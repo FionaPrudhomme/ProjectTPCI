@@ -2,9 +2,14 @@ sudo: true
 dist: xenial
 language: java
 addons:
+  coverity_scan:
+    project:
+      name: ProjetTPCI
+      build_command: ./mvnw -DskipTests=true -Dmaven.javadoc.skip=false -B -V compile
   apt:
     packages:
       - ant
+  
 
 jobs:
   include:
@@ -17,7 +22,7 @@ jobs:
       install: true
       script: src/test/java/com/example/helloworld/IntegrationTest.java
       before_install:
-        - chmod +x src/test/java/com/example/helloworld
+        - chmod +x src/test/java/com/example/helloworld/IntegrationTest.java
     - stage: test
       name: Linux + Oracle JDK 11
       os: linux
