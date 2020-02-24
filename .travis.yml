@@ -1,11 +1,22 @@
 sudo: true
 dist: xenial
 language: java
+jdk:
+  - openjdk8
+  - openjdk11
+  - openjdk13
+before_install:
+  - rm ~/.m2/settings.xml || true
+  - ulimit -c unlimited -S
+script:
+  - ./mvnw -Pjakarta-apis -V -B -ff verify
+  - ./mvnw -Pjakarta-apis -V -B -ff -q -pl docs site
+after_success:
+  - bash ci/after_success.sh
+cache:
+  directories:
+    - $HOME/.m2
 addons:
-  coverity_scan:
-    project:
-      name: ProjetTPCI
-      build_command: ./mvnw -DskipTests=true -Dmaven.javadoc.skip=false -B -V compile
   apt:
     packages:
       - ant
