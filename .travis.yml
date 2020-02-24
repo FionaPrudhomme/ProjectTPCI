@@ -15,13 +15,9 @@ jobs:
       sudo: required
       jdk: openjdk8
       install: true
-      script: src/test/java/com/example/helloworld/IntegrationTest.java
+      script: src/test/java/com/example/helloworld
       before_install:
-        - chmod +x src/test/java/com/example/helloworld/IntegrationTest.java
-        - chmod +x mvnw
-        - ./mvnw package
-        - java -jar target/dropwizard-example-$DW_VERSION.jar db migrate example.yml
-        - java -jar target/dropwizard-example-$DW_VERSION.jar server example.yml
+        - chmod +x src/test/java/com/example/helloworld
     - stage: test
       name: Linux + Oracle JDK 11
       os: linux
