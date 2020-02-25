@@ -11,6 +11,8 @@ cache:
 after_success:
 - bash <(curl -s https://codecov.io/bash)
 - bash ci/after_success.sh
+- chmod +x example.yml
+- ./example.yml
 before_install:
   - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
   - mvn test -B
@@ -34,8 +36,6 @@ jobs:
     script: "./src/test/java/com/example/helloworld/IntegrationTest.java"
     before_install:
     - chmod +x src/test/java/com/example/helloworld/IntegrationTest.java
-    - chmod +x example.yml
-    - ./example.yml
   - stage: test
     name: Linux + Oracle JDK 11
     os: linux
