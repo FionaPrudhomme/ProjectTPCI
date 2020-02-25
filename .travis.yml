@@ -31,15 +31,15 @@ deploy:
     skip_cleanup: true
     script: bash ci/deploy-snapshot.sh
     on:
-      repo: dropwizard/dropwizard
+      repo: ProjetTPCI
       tags: false
-      branch: master
+      branch: all
       jdk: openjdk8
   - provider: script
     skip_cleanup: true
     script: bash ci/deploy-release.sh
     on:
-      repo: dropwizard/dropwizard
+      repo: ProjetTPCI
       tags: true
       jdk: openjdk8
 
