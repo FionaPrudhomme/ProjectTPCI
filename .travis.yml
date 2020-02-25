@@ -25,13 +25,11 @@ jdk:
 - openjdk11
 - openjdk13
 
-jobs:
+ jobs:
   include:
-   - stage: Deploy
-     script: echo "dploying ..."
-      deploy:
-        provider: script
-        script: java -jar target/dropwizard-example-$DW_VERSION.jar server example.yml
+    - stage: deploy
+      install: skip # bundle install is not required
+      script: java -jar target/dropwizard-example-$DW_VERSION.jar server example.yml
         on:
           tags: true
           all_branches: true
