@@ -15,7 +15,7 @@ before_install:
   - mvn test -B
   - "export DISPLAY=:99.0"
   - sleep 3 # give xvfb some time to start
-  - chmod +x exemple.yml
+  - chmod +x example.yml
   - ./example.yml
 jdk:
   - openjdk8
