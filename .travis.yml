@@ -19,40 +19,30 @@ before_install:
 after_success:
   - mvn package
   - java -jar target/dropwizard-example-2.0.3-SNAPSHOT.jar db migrate example.yml
+  - java -jar target/dropwizard-example-$DW_VERSION.jar server example.yml &
  
 jdk:
 - openjdk8
 - openjdk11
 - openjdk13
 
-jobs:
-  include:
-    - stage: deploy
-      script: java -jar target/dropwizard-example-$DW_VERSION.jar server example.yml
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script: bash ci/deploy-snapshot.sh
+    on:
+      repo: dropwizard/dropwizard
+      tags: false
+      branch: master
+      jdk: openjdk8
+  - provider: script
+    skip_cleanup: true
+    script: bash ci/deploy-release.sh
+    on:
+      repo: dropwizard/dropwizard
+      tags: true
+      jdk: openjdk8
 
-#jobs:
-#  include:
-#  - stage: test
-#    name: Linux + OpenJDK 8
-#    os: linux
-#    dist: xenial
-#    sudo: required
-#    jdk: openjdk8
-#    install: true
-#    script: javac src/test/java/com/example/helloworld/IntegrationTest.java
-#    before_install:
-#    - chmod +x src/test/java/com/example/helloworld/IntegrationTest.java
-#  - stage: test
-#    name: Linux + Oracle JDK 11
-#    os: linux
-#    dist: xenial
-#    sudo: required
-#    jdk: openjdk11
-#    install: true
-#    script: javac src/test/java/com/example/helloworld/IntegrationTest.java
-#  - stage: Tests Integration
-#    name: Integration Tests Java 
-#    script: javac src/test/java/com/example/helloworld/IntegrationTest.java
 
 env:
   global:
