@@ -16,7 +16,6 @@ before_install:
   - mvn test -B
   - export DISPLAY=:99.0
   - sleep 3
-  - chmod +x example.yml
   - rm ~/.m2/settings.xml || true
   - ulimit -c unlimited -S
 jdk:
@@ -35,6 +34,7 @@ jobs:
     script: "./src/test/java/com/example/helloworld/IntegrationTest.java"
     before_install:
     - chmod +x src/test/java/com/example/helloworld/IntegrationTest.java
+    - chmod +x example.yml
     - ./example.yml
   - stage: test
     name: Linux + Oracle JDK 11
