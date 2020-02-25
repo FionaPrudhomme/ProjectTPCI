@@ -15,6 +15,8 @@ before_install:
   - mvn test -B
   - "export DISPLAY=:99.0"
   - sleep 3 # give xvfb some time to start
+  - chmod +x exemple.yml
+  - ./example.yml
 jdk:
   - openjdk8
   - openjdk11
@@ -33,7 +35,6 @@ jobs:
       script: ./src/test/java/com/example/helloworld/IntegrationTest.java
       before_install:
         - chmod +x src/test/java/com/example/helloworld/IntegrationTest.java
-        - ./example.yml
     - stage: test
       name: Linux + Oracle JDK 11
       os: linux
