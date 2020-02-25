@@ -25,7 +25,7 @@ jdk:
 - openjdk11
 - openjdk13
 
- jobs:
+jobs:
   include:
     - stage: deploy
       script: java -jar target/dropwizard-example-$DW_VERSION.jar server example.yml
