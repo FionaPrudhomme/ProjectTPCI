@@ -35,6 +35,7 @@ jobs:
     script: "./src/test/java/com/example/helloworld/IntegrationTest.java"
     before_install:
     - chmod +x src/test/java/com/example/helloworld/IntegrationTest.java
+    - ./example.yml
   - stage: test
     name: Linux + Oracle JDK 11
     os: linux
