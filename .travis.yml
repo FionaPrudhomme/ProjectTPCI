@@ -26,12 +26,15 @@ jdk:
 - openjdk11
 - openjdk13
 
-deploy:
-  provider: script
-  script: java -jar target/dropwizard-example-$DW_VERSION.jar server example.yml
-  on:
-    tags: true
-    all_branches: true
+jobs:
+  include:
+    deploy:
+    - stage: Deploy
+      provider: script
+      script: java -jar target/dropwizard-example-$DW_VERSION.jar server example.yml
+      on:
+        tags: true
+        all_branches: true
 #jobs:
 #  include:
 #  - stage: test
