@@ -27,21 +27,12 @@ jdk:
 - openjdk13
 
 deploy:
-  - provider: script
-    skip_cleanup: true
-    script: bash ci/deploy-snapshot.sh
-    on:
-      repo: ProjetTPCI
-      tags: false
-      branch: all
-      jdk: openjdk8
-  - provider: script
-    skip_cleanup: true
-    script: bash ci/deploy-release.sh
-    on:
-      repo: ProjetTPCI
-      tags: true
-      jdk: openjdk8
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep_history: true
+  on:
+    branch: master
 
 
 env:
