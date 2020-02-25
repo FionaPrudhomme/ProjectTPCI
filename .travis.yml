@@ -5,6 +5,7 @@ install: true
 script:
 - mvn clean package
 - mvn clean verify
+- travis_wait mvn install
 cache:
   directories:
   - "$HOME/.m2"
@@ -18,8 +19,8 @@ before_install:
   - ulimit -c unlimited -S
 after_success:
   - mvn package
-  - java -jar target/dropwizard-example-$DW_VERSION.jar db migrate example.yml
-  - java -jar target/dropwizard-example-$DW_VERSION.jar server example.yml
+  - java -jar dropwizard-example-$DW_VERSION.jar db migrate example.yml
+  - java -jar dropwizard-example-$DW_VERSION.jar server example.yml
 jdk:
 - openjdk8
 - openjdk11
