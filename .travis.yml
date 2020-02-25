@@ -16,13 +16,22 @@ before_install:
   - sleep 3
   - rm ~/.m2/settings.xml || true
   - ulimit -c unlimited -S
-after_success:
-  jobs:
+jobs:
   include:
-    - stage: build + test
-      script: mvn package
-      script: mvn install
-    before_script:
+    - stage: build + test Java 8
+      script:
+        - jdk_switcher use openjdk8
+        - mvn package
+        - mvn install
+      before_script:
+        - java -jar target/dropwizard-example-2.0.3-SNAPSHOT.jar db migrate example.yml
+        - java -jar target/dropwizard-example-$DW_VERSION.jar server example.yml &
+    - stage: build + test Java 11
+      script:
+        - jdk_switcher use openjdk11
+        - mvn package
+        - mvn install
+      before_script:
         - java -jar target/dropwizard-example-2.0.3-SNAPSHOT.jar db migrate example.yml
         - java -jar target/dropwizard-example-$DW_VERSION.jar server example.yml &
     - stage: maven site
@@ -30,10 +39,6 @@ after_success:
     - stage: deploy
       script: mvn deploy
  
-jdk:
-- openjdk8
-- openjdk11
-- openjdk13
 
 env:
   global:
