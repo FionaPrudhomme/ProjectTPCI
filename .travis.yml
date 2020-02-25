@@ -19,8 +19,8 @@ before_install:
   - ulimit -c unlimited -S
 after_success:
   - mvn package
-  - java -jar dropwizard-example-$DW_VERSION.jar db migrate example.yml
-  - java -jar dropwizard-example-$DW_VERSION.jar server example.yml
+  - java -jar *.jar db migrate example.yml
+  - java -jar target/*.jar server example.yml
 jdk:
 - openjdk8
 - openjdk11
