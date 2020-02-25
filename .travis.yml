@@ -16,7 +16,10 @@ before_install:
   - sleep 3
   - rm ~/.m2/settings.xml || true
   - ulimit -c unlimited -S
+after_success:
   - mvn package
+  - java -jar target/dropwizard-example-$DW_VERSION.jar db migrate example.yml
+  - java -jar target/dropwizard-example-$DW_VERSION.jar server example.yml
 jdk:
 - openjdk8
 - openjdk11
