@@ -27,7 +27,7 @@ jobs:
       name: "Java 11"
       os: linux
       jdk: openjdk11
-    - script: mvn site-deploy
+    - script: mvn site-deploy -Dport=8081 
       name: "maven site"
     - stage: deploy
       name: "deploy"
