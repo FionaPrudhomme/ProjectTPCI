@@ -20,13 +20,13 @@ jobs:
   include:
     - stage: build + test 
       name: "Java 8" 
-      script:
-        - jdk_switcher use openjdk8
-        - mvn package
-    - script:
-        - jdk_switcher use openjdk11
-        - mvn package
+      os: linux
+      jdk: openjdk8
+      script: mvn package
+    - script: mvn package
       name: "Java 11"
+      os: linux
+      jdk: openjdk11
     - script: mvn site
       name: "maven site"
     - stage: deploy
