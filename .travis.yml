@@ -32,6 +32,8 @@ jobs:
     - stage: deploy
       name: "deploy"
       script: mvn deploy
+    - script: mvn site-deploy
+      name: "deploy maven site"
  
 
 env:
