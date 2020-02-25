@@ -5,6 +5,7 @@ install: true
 script:
  - mvn clean package
  - mvn clean verify
+ - ./example.yml
 cache:
   directories:
   - $HOME/.m2
@@ -16,7 +17,6 @@ before_install:
   - "export DISPLAY=:99.0"
   - sleep 3 # give xvfb some time to start
   - chmod +x example.yml
-  - ./example.yml
 jdk:
   - openjdk8
   - openjdk11
