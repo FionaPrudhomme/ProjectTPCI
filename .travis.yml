@@ -11,6 +11,7 @@ before_install:
 script:
   - chmod +x mvnw
   - ./mvnw -Pjakarta-apis -V -B -ff verify
+  - chmod +x mvnw
   - ./mvnw -Pjakarta-apis -V -B -ff -q -pl docs site
 after_success:
   - bash ci/after_success.sh
