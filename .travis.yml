@@ -32,7 +32,7 @@ jobs:
     - stage: deploy
       name: "deploy"
       script: mvn deploy
-    - script: mvn site:run
+    - script: mvn site:run &
       name: "maven site"
  
 
