@@ -10,7 +10,6 @@ cache:
   - "$HOME/.m2"
 after_success:
 - bash <(curl -s https://codecov.io/bash)
-- bash ci/after_success.sh
 - chmod +x example.yml
 - ./example.yml
 before_install:
@@ -33,9 +32,9 @@ jobs:
     sudo: required
     jdk: openjdk8
     install: true
-    script: "./src/test/java/com/example/helloworld/IntegrationTest.java"
+    script: ./src/test/java/com/example/helloworld/IntegrationTest
     before_install:
-    - chmod +x src/test/java/com/example/helloworld/IntegrationTest.java
+    - chmod +x src/test/java/com/example/helloworld/IntegrationTest
   - stage: test
     name: Linux + Oracle JDK 11
     os: linux
@@ -43,10 +42,10 @@ jobs:
     sudo: required
     jdk: openjdk11
     install: true
-    script: "./src/test/java/com/example/helloworld/IntegrationTest.java"
+    script: ./src/test/java/com/example/helloworld/IntegrationTest
   - stage: Tests Integration
-    name: Integration Tests Java 8
-    script: "./src/test/java/com/example/helloworld/IntegrationTest.java"
+    name: Integration Tests Java 
+    script: ./src/test/java/com/example/helloworld/IntegrationTest
   - stage: deploy
     name: Deploy
     script: "./deploy"
