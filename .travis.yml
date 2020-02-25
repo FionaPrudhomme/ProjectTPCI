@@ -8,10 +8,7 @@ script:
 cache:
   directories:
   - "$HOME/.m2"
-after_success:
-- bash <(curl -s https://codecov.io/bash)
-- chmod +x example.yml
-- ./example.yml
+
 before_install:
   - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
   - mvn test -B
