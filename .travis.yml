@@ -18,25 +18,19 @@ before_install:
   - ulimit -c unlimited -S
 jobs:
   include:
-    - stage: build + test Java 8
+    - stage: build + test 
+      name: "Java 8" 
       script:
         - jdk_switcher use openjdk8
         - mvn package
-        - mvn install
-      before_script:
-        - java -jar target/dropwizard-example-2.0.3-SNAPSHOT.jar db migrate example.yml
-        - java -jar target/dropwizard-example-$DW_VERSION.jar server example.yml &
-    - stage: build + test Java 11
-      script:
+    - script:
         - jdk_switcher use openjdk11
         - mvn package
-        - mvn install
-      before_script:
-        - java -jar target/dropwizard-example-2.0.3-SNAPSHOT.jar db migrate example.yml
-        - java -jar target/dropwizard-example-$DW_VERSION.jar server example.yml &
-    - stage: maven site
-      script: mvn site
+      name: "Java 11"
+    - script: mvn site
+      name: "maven site"
     - stage: deploy
+      name: "deploy"
       script: mvn deploy
  
 
