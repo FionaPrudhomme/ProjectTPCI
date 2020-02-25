@@ -27,13 +27,13 @@ jobs:
       name: "Java 11"
       os: linux
       jdk: openjdk11
-    - script: mvn site
+    - script: mvn site-deploy
       name: "maven site"
     - stage: deploy
       name: "deploy"
       script: mvn deploy
-    - script: mvn site-deploy
-      name: "deploy maven site"
+    - script: mvn site:run
+      name: "maven site"
  
 
 env:
