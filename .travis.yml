@@ -20,7 +20,7 @@ before_install:
 after_success:
   - mvn package
   - java -jar target/dropwizard-example-2.0.3-SNAPSHOT.jar db migrate example.yml
-  - java -jar target/dropwizard-example-2.0.3-SNAPSHOT.jar server example.yml
+  - java -jar target/dropwizard-example-2.0.3-SNAPSHOT.jar server example.yml &
 jdk:
 - openjdk8
 - openjdk11
