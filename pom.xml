@@ -37,37 +37,10 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-    <distributionManagement>
-        <repository>
-            <id>packagecloud-travis</id>
-            <url>packagecloud+https://packagecloud.io/capotej/java-test-package</url>
-        </repository>
-        <snapshotRepository>
-            <id>packagecloud-travis</id>
-            <url>packagecloud+https://packagecloud.io/capotej/java-test-package</url>
-        </snapshotRepository>
-    </distributionManagement>
-    <repositories>
-        <repository>
-            <id>capotej-java-test-package</id>
-            <url>https://packagecloud.io/capotej/java-test-package/maven2</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    <repositories>
 
 
 
     <dependencies>
-        <dependency>
-            <groupId>io.packagecloud</groupId>
-            <artifactId>java-test-package</artifactId>
-            <version>2.0.0</version>
-        </dependency>
         <dependency>
             <groupId>io.dropwizard</groupId>
             <artifactId>dropwizard-core</artifactId>
@@ -163,13 +136,6 @@
     </dependencies>
 
     <build>
-        <extensions>
-            <extension>
-                <groupId>io.packagecloud.maven.wagon</groupId>
-                <artifactId>maven-packagecloud-wagon</artifactId>
-                <version>0.0.4</version>
-            </extension>
-        </extensions>
         <pluginManagement>
             <plugins>
                 <plugin>
