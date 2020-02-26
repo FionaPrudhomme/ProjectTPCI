@@ -38,8 +38,8 @@ jobs:
     - stage: deploy
       name: "deploy"
       script: mvn deploy
-   before_script: 
-    - mvn package
+      before_script: 
+        - mvn package
     - script: mvn site-deploy
       name: "deploy maven site"
  
