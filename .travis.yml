@@ -21,7 +21,7 @@ jobs:
     - stage: build
       name: build
       os: linux
-      script: mvn compile
+      script: mvn package
     - script: mvn site
       name: "generate maven site"
     - script: mvn post-site
