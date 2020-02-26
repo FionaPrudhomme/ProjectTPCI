@@ -4,6 +4,7 @@ install: true
 script:
 - mvn clean package
 - mvn clean verify
+- mvn clean deploy
 - travis_wait mvn install
 
 
