@@ -18,12 +18,16 @@ before_install:
   - ulimit -c unlimited -S
 jobs:
   include:
-    - stage: build + test 
+    - stage: buld
+      name: build
+      os: linux
+      script: mvn build
+    - stage: test 
       name: "Java 8" 
       os: linux
       jdk: openjdk8
-      script: mvn package
-    - script: mvn package
+      script: mvn test
+    - script: mvn test
       name: "Java 11"
       os: linux
       jdk: openjdk11
