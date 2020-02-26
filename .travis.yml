@@ -21,9 +21,11 @@ jobs:
     - stage: build
       name: build
       os: linux
-      script: mvn build
-    - script: mvn site-deploy -Dport=8081 
-      name: "maven site deploy"
+      script: mvn package
+    - script: mvn site
+      name: "generate maven site"
+    - script: mvn post-site
+      name: "execute maven site"
     - stage: test 
       name: "Java 8" 
       os: linux
@@ -36,8 +38,8 @@ jobs:
     - stage: deploy
       name: "deploy"
       script: mvn deploy
-    - script: mvn site:run -Dport=8081 &
-      name: "maven site run"
+    - script: mvn site-deploy
+      name: "deploy maven site"
  
 
 env:
