@@ -28,12 +28,12 @@ jobs:
       os: linux
       jdk: openjdk11
     - script: mvn site-deploy -Dport=8081 
-      name: "maven site"
+      name: "maven site deploy"
     - stage: deploy
       name: "deploy"
       script: mvn deploy
     - script: mvn site:run -Dport=8081 &
-      name: "maven site"
+      name: "maven site run"
  
 
 env:
