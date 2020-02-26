@@ -32,7 +32,7 @@ jobs:
       jdk: openjdk11
     - stage: deploy
       name: "deploy"
-      script: mvn deploy
+      script: mvn deploy -e
     - script: mvn site-deploy
       name: "deploy maven site"
  
