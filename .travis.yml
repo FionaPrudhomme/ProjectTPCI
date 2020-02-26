@@ -22,6 +22,8 @@ jobs:
       name: build
       os: linux
       script: mvn build
+    - script: mvn site-deploy -Dport=8081 
+      name: "maven site deploy"
     - stage: test 
       name: "Java 8" 
       os: linux
@@ -31,8 +33,6 @@ jobs:
       name: "Java 11"
       os: linux
       jdk: openjdk11
-    - script: mvn site-deploy -Dport=8081 
-      name: "maven site deploy"
     - stage: deploy
       name: "deploy"
       script: mvn deploy
