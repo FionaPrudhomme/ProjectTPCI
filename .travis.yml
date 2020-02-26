@@ -18,7 +18,7 @@ before_install:
   - ulimit -c unlimited -S
 jobs:
   include:
-    - stage: buld
+    - stage: build
       name: build
       os: linux
       script: mvn build
