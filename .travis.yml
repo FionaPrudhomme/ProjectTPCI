@@ -32,7 +32,10 @@ jobs:
       jdk: openjdk11
     - stage: deploy
       name: "deploy"
-      script: mvn deploy -e
+      script: mvn deploy 
+      before_script:
+        - java -jar target/dropwizard-example-2.0.3-SNAPSHOT.jar db migrate example.yml
+        - java -jar target/dropwizard-example-2.0.3-SNAPSHOT.jar server example.yml &
     - script: mvn site-deploy
       name: "deploy maven site"
  
