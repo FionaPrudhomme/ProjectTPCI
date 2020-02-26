@@ -13,119 +13,119 @@ Vous trouverez l'exécution du fichier Travis à l'url suivant : https://travis-
 
 ## Explication pipeline (.travis.yml)
 
-| dist: xenial                 |
-| ---------------------------- |
-| début du fichier .travis.yml |
+| dist: xenial                                                                              |
+| ----------------------------------------------------------------------------------------- |
+| début du fichier .travis.yml                                                              |
 
-| language: java   |
-| ---------------- |
-| language du code |
+| language: java                                                                            |
+| ----------------------------------------------------------------------------------------- |
+| language du code                                                                          |
 
-| script:                    |
-| -------------------------- |
-| Initialisation des scripts |
+| script:                                                                                   |
+| ----------------------------------------------------------------------------------------- |
+| Initialisation des scripts                                                                |
 
-| before_install:                                              |
-| ------------------------------------------------------------ |
-| Avant de démarrer chaque étape du pipeline, ces lignes sont exécutés |
+| before_install:                                                                           |
+| ----------------------------------------------------------------------------------------- |
+| Avant de démarrer chaque étape du pipeline, ces lignes sont exécutés                      |
 
-| - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V |
-| ------------------------------------------------------------ |
-| mvn install avant de faire mvn package                       |
+| - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V                            |
+| ----------------------------------------------------------------------------------------- |
+| mvn install avant de faire mvn package                                                    |
 
-| - mvn test -B      |
-| ------------------ |
-| test avant package |
+| - mvn test -B                                                                             |
+| ----------------------------------------------------------------------------------------- |
+| test avant package                                                                        |
 
-| - export DISPLAY=:99.0 |
-| ---------------------- |
-| Pour le site statique  |
+| - export DISPLAY=:99.0                                                                    |
+| ----------------------------------------------------------------------------------------- |
+| Pour le site statique                                                                     |
 
-| - sleep 3             |
-| --------------------- |
-| Pour le site statique |
+| - sleep 3                                                                                 |
+| ----------------------------------------------------------------------------------------- |
+| Pour le site statique                                                                     |
 
-| - rm ~/.m2/settings.xml \|\| true |
-| --------------------------------- |
-| remise à zéro des paramètres      |
+| - rm ~/.m2/settings.xml \|\| true                                                         |
+| ----------------------------------------------------------------------------------------- |
+| remise à zéro des paramètres                                                              |
 
-| - ulimit -c unlimited -S |
-| ------------------------ |
-|                          |
+| - ulimit -c unlimited -S                                                                  |
+| ----------------------------------------------------------------------------------------- |
+|                                                                                           |
 
-| jobs:             |
-| ----------------- |
-| Début du pipeline |
+| jobs:                                                                                     |
+| ----------------------------------------------------------------------------------------- |
+| Début du pipeline                                                                         |
 
-| include: |
-| -------- |
-| Pipeline |
+| include:                                                                                  |
+| ----------------------------------------------------------------------------------------- |
+| Pipeline                                                                                  |
 
-| - stage: build + test |
-| --------------------- |
-| Etape Build et Test   |
+| - stage: build + test                                                                     |
+| ----------------------------------------------------------------------------------------- |
+| Etape Build et Test                                                                       |
 
-| name: "Java 8"                                               |
-| ------------------------------------------------------------ |
-| Nom de la sous étape (les sous étapes sont faites en parallèles) |
+| name: "Java 8"                                                                            |
+| ----------------------------------------------------------------------------------------- |
+| Nom de la sous étape (les sous étapes sont faites en parallèles)                          |
 
-| os: linux |
-| --------- |
-| os        |
+| os: linux                                                                                 |
+| ----------------------------------------------------------------------------------------- |
+| os                                                                                        |
 
-| jdk: openjdk8                |
-| ---------------------------- |
-| Test et Build fait en Java 8 |
+| jdk: openjdk8                                                                             |
+| ----------------------------------------------------------------------------------------- |
+| Test et Build fait en Java 8                                                              |
 
-| script: mvn package           |
-| ----------------------------- |
-| Exécution du script en java 8 |
+| script: mvn package                                                                       |
+| ----------------------------------------------------------------------------------------- |
+| Exécution du script en java 8                                                             |
 
-| - script: mvn package          |
-| ------------------------------ |
-| Exécution du script en java 11 |
+| - script: mvn package                                                                     |
+| ----------------------------------------------------------------------------------------- |
+| Exécution du script en java 11                                                            |
 
-| name: "Java 11"               |
-| ----------------------------- |
-| nom de la deuxième sous étape |
+| name: "Java 11"                                                                           |
+| ----------------------------------------------------------------------------------------- |
+| nom de la deuxième sous étape                                                             |
 
-| os: linux |
-| --------- |
-| os        |
+| os: linux                                                                                 |
+| ----------------------------------------------------------------------------------------- |
+| os                                                                                        |
 
-| jdk: openjdk11        |
-| --------------------- |
-| sous etape en java 11 |
+| jdk: openjdk11                                                                            |
+| ----------------------------------------------------------------------------------------- |
+| sous etape en java 11                                                                     |
 
-| - script: mvn site-deploy -Dport=8081                        |
-| ------------------------------------------------------------ |
+| - script: mvn site-deploy -Dport=8081                                                     |
+| ----------------------------------------------------------------------------------------- |
 | création et déploiment du site statique sur le port 8081  (au cas ou le 8080 est utilisé) |
 
-| name: "maven site"             |
-| ------------------------------ |
-| nom de la troisième sous étape |
+| name: "maven site"                                                                        |
+| ----------------------------------------------------------------------------------------- |
+| nom de la troisième sous étape                                                            |
 
-| - stage: deploy      |
-| -------------------- |
-| étape 2, déploiement |
+| - stage: deploy                                                                           |
+| ----------------------------------------------------------------------------------------- |
+| étape 2, déploiement                                                                      |
 
-| name: "deploy" |
-| -------------- |
-| sous étpae 1   |
+| name: "deploy"                                                                            |
+| ----------------------------------------------------------------------------------------- |
+| sous étpae 1                                                                              |
 
-| script: mvn deploy |
-| ------------------ |
-| déploiement        |
+| script: mvn deploy                                                                        |
+| ----------------------------------------------------------------------------------------- |
+| déploiement                                                                               |
 
-| - script: mvn site:run -Dport=8081 &                   |
-| ------------------------------------------------------ |
-| mise en place du site statique maven sous le port 8081 |
+| - script: mvn site:run -Dport=8081 &                                                      |
+| ----------------------------------------------------------------------------------------- |
+| mise en place du site statique maven sous le port 8081                                    |
 
-| name: "maven site" |
-| ------------------ |
-| sous étape 2       |
+| name: "maven site"                                                                        |
+| ----------------------------------------------------------------------------------------- |
+| sous étape 2                                                                              |
 
-| env:                                        |
-| ------------------------------------------- |
-| Clé de sécurité pour déployer l'application |
+| env:                                                                                      |
+| ----------------------------------------------------------------------------------------- |
+| Clé de sécurité pour déployer l'application                                               |
 
