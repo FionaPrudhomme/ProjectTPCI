@@ -37,18 +37,15 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-    <extensions>
-        <extension>
-            <groupId>org.kuali.maven.wagons</groupId>
-            <artifactId>maven-s3-wagon</artifactId>
-            <version>1.2.1</version>
-        </extension>
-    </extensions>
     <distributionManagement>
-        <site>
-            <id>s3.site</id>
-            <url>s3://<S3 Bucket Name>/<Site Path></url>
-        </site>
+        <repository>
+            <id>packagecloud-travis</id>
+            <url>packagecloud+https://packagecloud.io/capotej/java-test-package</url>
+        </repository>
+        <snapshotRepository>
+            <id>packagecloud-travis</id>
+            <url>packagecloud+https://packagecloud.io/capotej/java-test-package</url>
+        </snapshotRepository>
     </distributionManagement>
 
     <dependencies>
@@ -147,6 +144,13 @@
     </dependencies>
 
     <build>
+        <extensions>
+            <extension>
+                <groupId>io.packagecloud.maven.wagon</groupId>
+                <artifactId>maven-packagecloud-wagon</artifactId>
+                <version>0.0.4</version>
+            </extension>
+        </extensions>
         <pluginManagement>
             <plugins>
                 <plugin>
