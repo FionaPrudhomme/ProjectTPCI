@@ -21,7 +21,7 @@
              so that dropwizard-example site doesn't get staged and deployed. -->
         <maven.site.skip>false</maven.site.skip>
         <maven.site.deploy.skip>false</maven.site.deploy.skip>
-        <skipNexusStagingDeployMojo>false</skipNexusStagingDeployMojo>
+        <skipNexusStagingDeployMojo>true</skipNexusStagingDeployMojo>
 
         <junit5.version>5.6.0</junit5.version>
     </properties>
@@ -38,20 +38,7 @@
         </dependencies>
     </dependencyManagement>
     
-    
-    <repositories>
-        <repository>
-            <id>ossrh</id>
-            <name>Sonatype Nexus Snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
+   
 
     <dependencies>
         <dependency>
