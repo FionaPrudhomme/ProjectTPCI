@@ -40,7 +40,6 @@
     
     <proxies>
         <proxy>
-            <id>example-proxy</id>
             <active>true</active>
             <protocol>http</protocol>
             <host>localhost</host>
@@ -48,7 +47,7 @@
             <username>formation</username>
             <password>formation20192020</password>
             <nonProxyHosts>localhost/nonProxyHosts>
-            </proxy>
+        </proxy>
     </proxies>
 
     <dependencies>
