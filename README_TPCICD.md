@@ -8,6 +8,7 @@ Le but de cet exercice pratique est d’évaluer l’étudiant sur la mise en oe
 
 Pour la mise en place du pipeline, j'ai utilisé le service Travis CI sur un projet GitHub dropwizard (projet OpenSource) . Ci-dessous les explications en détail de mon fichier .travis.yml me permettant d'exécuter mon pipeline.
 
+Vous trouverez l'exécution du fichier Travis à l'url suivant : https://travis-ci.com/FionaPrudhomme/ProjectTPCI
 
 
 ## Explication pipeline (.travis.yml)
