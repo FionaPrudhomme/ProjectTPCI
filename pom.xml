@@ -37,18 +37,7 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-    
-    <proxies>
-        <proxy>
-            <active>true</active>
-            <protocol>http</protocol>
-            <host>localhost</host>
-            <port>8080</port>
-            <username>formation</username>
-            <password>formation20192020</password>
-            <nonProxyHosts>localhost/nonProxyHosts>
-        </proxy>
-    </proxies>
+   
 
     <dependencies>
         <dependency>
