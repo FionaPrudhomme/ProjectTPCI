@@ -8,7 +8,10 @@ Le but de cet exercice pratique est d’évaluer l’étudiant sur la mise en oe
 
 Pour la mise en place du pipeline, j'ai utilisé le service Travis CI sur un projet GitHub dropwizard (projet OpenSource) . Ci-dessous les explications en détail de mon fichier .travis.yml me permettant d'exécuter mon pipeline.
 
+L'étape Deploy ne fonctionne pas, c'est du aux paramètre dans pom.xml qui 'skip' maven deploy. Je n'ai pas trouvé de solution pour faire fonctionner le déploiement, notemment car Travis lance le pipeline dans une machine virtuelle et non en local.
 
+Execution du pipeline : 
+https://travis-ci.com/FionaPrudhomme/ProjectTPCI
 
 ## Explication pipeline (.travis.yml)
 
@@ -31,10 +34,6 @@ Pour la mise en place du pipeline, j'ai utilisé le service Travis CI sur un pro
 | - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V |
 | ------------------------------------------------------------ |
 | mvn install avant de faire mvn package                       |
-
-| - mvn test -B      |
-| ------------------ |
-| test avant package |
 
 | jobs:             |
 | ----------------- |
@@ -116,13 +115,13 @@ Pour la mise en place du pipeline, j'ai utilisé le service Travis CI sur un pro
 | ------------------ |
 | déploiement        |
 
-| - script: mvn site-deploy |
+| - script: ./gendoc.sh     |
 | ------------------------- |
-| maven site deploiement    |
+| git doc deploiement       |
 
-| name:  deploy maven site |
-| ------------------------ |
-| sous étape 2             |
+| name:  deploy documentation |
+| ------------------------    |
+| sous étape 2                |
 
 | env:                                        |
 | ------------------------------------------- |
