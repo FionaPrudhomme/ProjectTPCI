@@ -1,2 +1,7 @@
-touch gendoc.sh
-chmod +x gendoc.sh
+cd /your/project/dir
+git checkout --orphan gh-pages
+git rm -rf .
+echo "My gh-pages branch" > README.md
+git add .
+git commit -am "Clean gh-pages branch"
+git push origin gh-pages
