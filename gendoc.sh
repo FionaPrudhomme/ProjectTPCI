@@ -1,4 +1,4 @@
-cd /your/project/dir
+cd ProjetTPCI
 git checkout --orphan gh-pages
 git rm -rf .
 echo "My gh-pages branch" > README.md
