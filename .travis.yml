@@ -7,7 +7,9 @@ script:
 - mvn clean deploy
 - travis_wait mvn install
 
-
+branches:
+  except:
+    - gh-pages
   
 
 
@@ -37,9 +39,7 @@ jobs:
         - java -jar target/dropwizard-example-2.0.3-SNAPSHOT.jar server example.yml &
     - script: ./gendoc.sh
         name: "generate and deploy documentation"
-        branches:
-          except:
-            - gh-pages
+
 
  
 env:
