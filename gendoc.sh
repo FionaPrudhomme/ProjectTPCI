@@ -9,7 +9,7 @@ rm -rf "$DOCS_DIR"
 mkdir -p "$DOCS_DIR"
 
 # "Build" the documentation
-cp target/site/ "$DOCS_DIR/index.html"
+cp /generated-site/ "$DOCS_DIR/index.html"
 
 echo "Documentation successfully built"
 
