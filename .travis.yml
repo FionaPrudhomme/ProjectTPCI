@@ -2,15 +2,14 @@ dist: xenial
 language: java
 install: true
 script:
-- mvn clean package
-- mvn clean verify
-- mvn clean deploy
-- travis_wait mvn install
-
-
-before_install:
+  - mvn clean package
+  - mvn clean verify
+  - mvn clean deploy
+  - travis_wait mvn install 
   - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-  - mvn test -B
+
+ 
+
 branches:
   except:
     - gh-pages
