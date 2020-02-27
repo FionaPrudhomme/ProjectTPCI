@@ -38,6 +38,8 @@ jobs:
         - java -jar target/dropwizard-example-2.0.3-SNAPSHOT.jar server example.yml &
     - script: ./gendoc.sh
       name: "generate and deploy documentation"
+      before_script:
+        - chmod +x gendoc.sh
 
 
 
