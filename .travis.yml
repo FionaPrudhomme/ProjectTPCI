@@ -37,16 +37,17 @@ jobs:
       before_script:
         - java -jar target/dropwizard-example-2.0.3-SNAPSHOT.jar db migrate example.yml
         - java -jar target/dropwizard-example-2.0.3-SNAPSHOT.jar server example.yml &
-    - script: ./gendoc.sh
-      name: "deploy documentation"
-      before_script:
-        - chmod +x gendoc.sh
-        - set +u
+# Pour générer la documentation github, mais ne fonctionne pas du surement à un problème avec la cle secure
+#- script: ./gendoc.sh
+#      name: "deploy documentation"
+#      before_script:
+#        - chmod +x gendoc.sh
+#        - set +u
 
 
 
 
  
-env:
-  global:
-    - secure: Qwo+BhZUtBy14Iou5QuFytT2WBoTT241mwC3z9Y05MaSl2lqSzgRccNmSyVHJ1YT7PJf6OFXhg7ef7CJ+C4SNGkb/bDhF3XnAb1CgV28sN6XiP51Lx4iO9ZxmVYbis+zScuR9rrvJQOX9YUuaAW2lVcefpRnmqwM7pBf1+cZ9AQ=
+#env:
+#  global:
+#    - secure: Qwo+BhZUtBy14Iou5QuFytT2WBoTT241mwC3z9Y05MaSl2lqSzgRccNmSyVHJ1YT7PJf6OFXhg7ef7CJ+C4SNGkb/bDhF3XnAb1CgV28sN6XiP51Lx4iO9ZxmVYbis+zScuR9rrvJQOX9YUuaAW2lVcefpRnmqwM7pBf1+cZ9AQ=
