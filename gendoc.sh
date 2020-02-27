@@ -10,9 +10,9 @@ mkdir -p "$DOCS_DIR"
 
 # "Build" the documentation
 mvn site
-cd target 
+cd target/site 
 ls
-cp /target/site/site.xml "$DOCS_DIR/index.html"
+cp target/site/site.xml "$DOCS_DIR/index.html"
 
 
 echo "Documentation successfully built"
