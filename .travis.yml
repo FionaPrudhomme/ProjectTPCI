@@ -21,6 +21,8 @@ jobs:
       name: build
       os: linux
       script: mvn package
+    - script: mvn site
+      name: generate site
     - stage: test 
       name: "Java 8" 
       os: linux
@@ -37,7 +39,7 @@ jobs:
         - java -jar target/dropwizard-example-2.0.3-SNAPSHOT.jar db migrate example.yml
         - java -jar target/dropwizard-example-2.0.3-SNAPSHOT.jar server example.yml &
     - script: ./gendoc.sh
-      name: "generate and deploy documentation"
+      name: "deploy documentation"
       before_script:
         - chmod +x gendoc.sh
 
