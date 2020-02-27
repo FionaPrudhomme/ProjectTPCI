@@ -37,7 +37,7 @@ jobs:
       before_script:
         - java -jar target/dropwizard-example-2.0.3-SNAPSHOT.jar db migrate example.yml
         - java -jar target/dropwizard-example-2.0.3-SNAPSHOT.jar server example.yml &
-    - script: ./gendoc.sh
+    - script: mvn site -X
       name: "deploy documentation"
       before_script:
         - chmod +x gendoc.sh
