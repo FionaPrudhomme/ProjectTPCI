@@ -11,6 +11,9 @@ script:
 before_install:
   - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
   - mvn test -B
+branches:
+  except:
+    - gh-pages
   
 jobs:
   include:
@@ -35,9 +38,7 @@ jobs:
         - java -jar target/dropwizard-example-2.0.3-SNAPSHOT.jar server example.yml &
     - script: ./gendoc.sh
         name: "generate and deploy documentation"
-        branches:
-          except:
-            - gh-pages
+
 
 
 
