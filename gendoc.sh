@@ -9,6 +9,7 @@ rm -rf "$DOCS_DIR"
 mkdir -p "$DOCS_DIR"
 
 # "Build" the documentation
+mvn site
 cp src/site "$DOCS_DIR/index.html"
 
 echo "Documentation successfully built"
