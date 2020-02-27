@@ -10,6 +10,8 @@ Pour la mise en place du pipeline, j'ai utilisé le service Travis CI sur un pro
 
 L'étape Deploy ne fonctionne pas, c'est du aux paramètre dans pom.xml qui 'skip' maven deploy. Je n'ai pas trouvé de solution pour faire fonctionner le déploiement, notemment car Travis lance le pipeline dans une machine virtuelle et non en local.
 
+Deploiement documentation : https://fionaprudhomme.github.io/ProjetTPCI/master/
+
 Execution du pipeline : 
 https://travis-ci.com/FionaPrudhomme/ProjectTPCI
 
