@@ -41,6 +41,7 @@ jobs:
       name: "deploy documentation"
       before_script:
         - chmod +x gendoc.sh
+        - set +u
 
 
 
