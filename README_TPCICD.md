@@ -1,7 +1,6 @@
 # TP - Introduction au CI/CD 2019/2020
 
 
-
 ## Objectifs du Travail Pratique
 
 Le but de cet exercice pratique est d’évaluer l’étudiant sur la mise en oeuvre des connaissances (théoriques ET pratiques) acquises lors des 2 jours d’introduction au CI/CD.
