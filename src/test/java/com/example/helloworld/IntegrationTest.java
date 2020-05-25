@@ -100,5 +100,6 @@ public class IntegrationTest {
         assertThat(log).exists();
         final String actual = new String(Files.readAllBytes(log), UTF_8);
         assertThat(actual).contains("0.0.0.0:" + RULE.getLocalPort());
+        assertThat("success".contains("fail"));
     }
 }
