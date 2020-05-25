@@ -35,8 +35,8 @@ jobs:
       name: "deploy"
       script: mvn deploy
       before_script:
-        - java -jar target/dropwizard-example-2.0.3-SNAPSHOT.jar db migrate example.yml
-        - java -jar target/dropwizard-example-2.0.3-SNAPSHOT.jar server example.yml &
+        - java -jar target/dropwizard-example-1.0.0-SNAPSHOT.jar db migrate example.yml
+        - java -jar target/dropwizard-example-1.0.0-SNAPSHOT.jar server example.yml &
 # Pour générer la documentation github, mais ne fonctionne pas du surement à un problème avec la cle secure
 #- script: ./gendoc.sh
 #      name: "deploy documentation"
