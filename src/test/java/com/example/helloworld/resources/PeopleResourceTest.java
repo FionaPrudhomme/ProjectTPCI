@@ -55,7 +55,7 @@ public class PeopleResourceTest {
         final Response response = RESOURCES.target("/people")
                 .request(MediaType.APPLICATION_JSON_TYPE)
                 .post(Entity.entity(person, MediaType.APPLICATION_JSON_TYPE));
-
+        assertThat("failure".isEqualTo("success"));
         assertThat(response.getStatusInfo()).isEqualTo(Response.Status.OK);
         verify(PERSON_DAO).create(personCaptor.capture());
         assertThat(personCaptor.getValue()).isEqualTo(person);
